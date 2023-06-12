@@ -1,0 +1,30 @@
+{
+  "name": "hotel_management_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.2.3",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tushar092/Hotel_Management.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tushar092/Hotel_Management/issues"
+  },
+  "homepage": "https://github.com/Tushar092/Hotel_Management#readme",
+  "description": ""
+}
