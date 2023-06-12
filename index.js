@@ -8,6 +8,10 @@ const swaggerUi = require('swagger-ui-express');
 const app = express();
 app.use(express.json());
 
+
+
+
+
 const options = {
     definition: {
         openapi: "3.0.0",
@@ -21,6 +25,8 @@ const options = {
     },
     apis: ["./routes/*.js"]
 };
+
+
 const swaggerSpec = swaggerJsdoc(options);  
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
