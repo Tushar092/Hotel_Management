@@ -7,6 +7,45 @@ const { auth } = require("../middlewares/auth.middleware");
 
 const ownerRouter = express.Router();
 
+/**
+ * @swagger
+ * /Owner:
+ *   post:
+ *     summary: Signup for owners.
+ *     description: 
+ *     responses:
+ *       200:
+ *         description: Hotel Owners can signup through this API.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                         description: The Note ID.
+ *                       title:
+ *                         type: string
+ *                         description: The Note's title.
+ *                       body:
+ *                         type: string
+ *                         description: The Note's body.
+ *                       category:
+ *                         type: string
+ *                         description: Category of the Note.
+ *                       userID:
+ *                         type: string
+ *                         description: Auto-generated ID of the user.
+ *                       user:
+ *                         type: string
+ *                         description: Name of the respective user.
+ */
+
 ownerRouter.post("/signup", async (req, res) => {
     const { owner_name, email, password, phone, age, city } = req.body;
     console.log(owner_name, email, password, phone, age, city);
@@ -53,19 +92,6 @@ ownerRouter.post("/login", async (req, res) => {
         res.status(400).json({ err: error.message });
     }
 });
-
-
-// userRoute.get("/logout", checkuser, async (req, res) => {
-//     const token = req.headers.authorization?.split(" ")[1];
-//     try {
-//         let bltoken = new TokenModel({token});
-//         await bltoken.save();
-//         res.status(200).json({msg: "User has been logged out"});
-//     } catch (error) {
-//         res.status(400).json({error: error.message});
-//     }
-// });
-
 
 ownerRouter.get("/logout", auth, async (req, res) => {
     const token = req.headers.authorization?.split(" ")[1];
