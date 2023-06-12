@@ -9,7 +9,7 @@ const ownerRouter = express.Router();
 
 /**
  * @swagger
- * /Owner:
+ * /owners/signup:
  *   post:
  *     summary: Signup for owners.
  *     description: 
@@ -26,23 +26,23 @@ const ownerRouter = express.Router();
  *                   items:
  *                     type: object
  *                     properties:
- *                       id:
+ *                       name:
  *                         type: string
- *                         description: The Note ID.
- *                       title:
+ *                         description: The name of the user.
+ *                       email:
  *                         type: string
- *                         description: The Note's title.
- *                       body:
+ *                         description: The owner's email.
+ *                       age:
  *                         type: string
- *                         description: The Note's body.
- *                       category:
+ *                         description: age.
+ *                       password:
  *                         type: string
- *                         description: Category of the Note.
- *                       userID:
+ *                         description: password.
+ *                       city:
  *                         type: string
  *                         description: Auto-generated ID of the user.
- *                       user:
- *                         type: string
+ *                       phone:
+ *                         type: number
  *                         description: Name of the respective user.
  */
 
@@ -69,6 +69,33 @@ ownerRouter.post("/signup", async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /owners/login:
+ *   post:
+ *     summary: Login for owners.
+ *     description: 
+ *     responses:
+ *       200:
+ *         description: Hotel Owners can login through this API.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       email:
+ *                         type: string
+ *                         description: The owner's email.
+ *                       password:
+ *                         type: string
+ *                         description: password.
+ */
+
 ownerRouter.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -92,6 +119,34 @@ ownerRouter.post("/login", async (req, res) => {
         res.status(400).json({ err: error.message });
     }
 });
+
+/**
+ * @swagger
+ * /owners/login:
+ *   get:
+ *     summary: Signup for owners.
+ *     description: 
+ *     responses:
+ *       200:
+ *         description: Hotel Owners can signup through this API.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       email:
+ *                         type: string
+ *                         description: The owner's email.
+ *                       password:
+ *                         type: string
+ *                         description: password.
+ */
+
 
 ownerRouter.get("/logout", auth, async (req, res) => {
     const token = req.headers.authorization?.split(" ")[1];
